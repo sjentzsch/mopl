@@ -5,7 +5,8 @@ MOPL: A Multi-Modal Path Planner for Generic Manipulation Tasks, inspired by the
 
 Installation (for Ubuntu + Eclipse):
 --------------
-- Assure to have the Robotics Library installed (http://www.roboticslibrary.org/)
+- Make you have the Robotics Library (http://www.roboticslibrary.org/) and all other dependencies (Eigen template library, Qt4, Coin library, SoQt toolkit for Coin, SOLID collision checking library, Boost system library, LibXml2) installed. In Ubuntu/Debian, the packages should be
+    sudo apt-get install build-essentials cmake-curses-gui libcoin60-dev libeigen3-dev libqt4-dev libqt4-opengl-dev libsoqt4-dev librl-dev libsolid-dev libboost-system-dev libxml2-dev
 - Clone this git repository
 - Within the root folder, create subfolders 'Debug', 'Release', and 'output'
 - Within each the 'Debug' and 'Release' folder, execute "ccmake ..", press 'c', as CMAKE_BUILD_TYPE enter either "RelWithDebInfo" or "Debug", ignore the warnings, and generate
