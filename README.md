@@ -14,11 +14,16 @@ Installation (for Ubuntu + Eclipse):
 	- Project Name: mopl
 	- Settings -> C/C++ Build -> "make -j8" for all configurations, and uncheck "generate makefiles automatically"
 	- In the run configurations (create one for each 'Release' and 'Debug'):
-		- Application: e.g. "Release/src/rlDamaDemoGUI/rlDamaDemoGUI"
+		- Application: "Release/src/rlDamaDemoGUI/rlDamaDemoGUI", resp. "Debug/src/rlDamaDemoGUI/rlDamaDemoGUI"
 		- choose the respective Build configuration
 		- Arguments -> Working directory: ${workspace_loc:mopl}/output
+		- Arguments -> Program arguments: ../data/tasks/meka-test.xml (i.e., choose the scenario to be solved)
 
 Testing:
 --------------
 - Within your git repository root folder, execute: "cd Release && make -j8 && ctest"
 - If all test scenarios run nice and smoothly, you are ready to start your own MOPL-Experiments!
+
+Testing:
+--------------
+- 
