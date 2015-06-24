@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dama prefixName="mobile-robot-1" description="Mobile Robot test">
+	<model numOfObjects="3" dimOfObjects="3">
+		<sceneFile href="../models/mobile-robot/box-2d-050505_boxes.xml"/> <!-- or take box-2d-050505_boxes.onePackage.xml ?? -->
+		<mdlFile href="../models/mobile-robot/mobile-robot-mdl.xml"/>
+		<!-- <allJointsAreRevolute /> -->
+		<allJointsArePrismatic />
+		<!-- <coupleJoint1AndJoint2 /> -->
+		<objectSamplingSpace name="2D World" x_min="-2.5" x_max="2.5" y_min="-2.5" y_max="2.5" z_min="0.5" z_max="0.5" />
+		<objectSupportSurface name="Surface" x_min="-2.5" x_max="2.5" y_min="-2.5" y_max="2.5" z="0.5" />
+		<!-- <objectSupportSurface name="Front Table" x_min="0.32" x_max="0.82" y_min="-0.25" y_max="0.25" z="0.55" /> -->
+		<!-- <objectSupportSurface name="Side Table" x_min="-0.05" x_max="0.45" y_min="-0.85" y_max="-0.35" z="0.55" /> -->
+	</model>
+	<problem>
+		<start>
+			<q unit="m">1.9</q>
+			<q unit="m">1.9</q>
+			<q unit="m">-2.0</q>
+			<q unit="m">0.3</q>
+			<q unit="m">0.5</q>
+			<q unit="m">0.8</q>
+			<q unit="m">-0.1</q>
+			<q unit="m">0.5</q>
+			<q unit="m">-1.5</q>
+			<q unit="m">-1.5</q>
+			<q unit="m">0.5</q>
+		</start>
+		<goal>
+			<q unit="m">0.0</q>
+			<q unit="m">0.0</q>
+			<q unit="m" free="true">0.0</q>
+			<q unit="m" free="true">0.0</q>
+			<q unit="m">0.5</q>
+			<q unit="m" free="true">0.0</q>
+			<q unit="m" free="true">0.0</q>
+			<q unit="m">0.5</q>
+			<q unit="m">-0.9</q>
+			<q unit="m">-0.9</q>
+			<q unit="m">0.5</q>
+		</goal>
+	</problem>
+	<planner>
+		<!--<debugMode />-->
+		<!--<workspaceSampling edges="2500" />-->
+		<primitives numEndEffectorBodies="1">
+			<primTransit />
+			<primPush dist_to_object_xy="0.41" height_offset_object="0.0" max_push_dist="10.0">
+				<primPushMobile postproc_extend_dist="0.0" />
+				<!--<primPushInterior tilt_hand_inward_angle="-15" tilt_hand_downward_angle="75" postproc_extend_dist="0.26" />--> <!-- r3: 0, 65 -->
+				<!--<primPushExterior tilt_hand_inward_angle="15" tilt_hand_downward_angle="75" postproc_extend_dist="0.26" />--> <!-- r3: 0, 65 -->
+				<!--<primPushFrontal tilt_hand_inward_angle="30" tilt_hand_downward_angle="0" postproc_extend_dist="0.26" />-->
+			</primPush>
+			<!--<primPickup height_offset_object="-0.015" height_pickup_dist_object="0.1" min_plane_dist_for_pickup="0.2" />--> <!-- for robot 3 (=kuka): height_offset_object="0" -->
+			<!--<primTransferRigid />-->
+		</primitives>
+		<kinematicSoftRange scale="1.0" />
+		<delta>0.05</delta> <!-- unit="deg" -->
+		<extendStep>0.35</extendStep>
+		<epsilon>1e-3</epsilon>
+		<!--<duration>120</duration>-->
+		<seed type="randSingle" group="25" single="699158960"></seed><!-- type is "randSingle" or "singleOnly" -->
+		<numRuns>1</numRuns>
+		<kdTree />
+		<!--<accurateDistance />-->
+		<bidirectional/>
+		<sampling robotPoseProb="0.4" objectsFreeProb="0.5" robotRandProb="0.5" />
+		<!--<hierarchical objectPathTimeout="120" subProblemTimeout="30" />--> <!-- for all non-mobile robots: subProblemTimeout was 300 -->
+		<metricRobot radToMeter="0.5" quatToMeter="2.0" overallRobotWeight="1.0" />
+		<!-- metric types are: 1) MaxComponentMovement, 2) SumComponentMovementWithObjectPenalty (requires movingObjectPenalty), 3) ForwardDistanceWithObjectPenalty (requires movingObjectPenalty, moveToObjectPenalty, moveToObjectFactor) -->
+		<metricComposed type="ForwardDistanceWithObjectPenalty" movingObjectPenalty="0.1" moveToObjectPenalty="0.3" moveToObjectFactor="1.0" />
+		<inverseKinematics postureGainMaxStepDeg="20.0" prematureQuit="true" /> <!-- try to go up to 60.0+ -->
+	</planner>
+	<postProc>
+		<pathSmoothing />
+		<!--<extendPushes />-->
+	</postProc>
+	<viewer mode="once" onlyResult="off" speedFactor="10.0">
+		<!--<showFullTree />-->
+		<!--<showExportableTree pointSize="21.0" lineWidth="10.0" />--> <!-- for all non-mobile robots: set to 16.0 and 5.0 -->
+	</viewer>
+</dama>

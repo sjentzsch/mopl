@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dama prefixName="kuka-scenario-1" description="Kuka Scenario 1 - Tables">
+	<model numOfObjects="3" dimOfObjects="3">
+		<sceneFile href="../models/kuka-lwr4/rlsg/kuka-scenario1.xml"/>
+		<sceneHDFile href="../models/kuka-lwr4/rlsg/kuka-scenario1.xml"/>
+		<mdlFile href="../models/kuka-lwr4/rlmdl/kuka-lwr4-right_scene3.xml"/>
+		<allJointsAreRevolute />
+		<!--<allJointsArePrismatic />-->
+		<!--<coupleJoint1AndJoint2 />-->
+		<objectSamplingSpace name="Area over Tables" x_min="-0.2" x_max="0.7" y_min="-0.65" y_max="0.25" z_min="0.45" z_max="0.95" />
+		<objectSupportSurface name="Front Table" x_min="0.25" x_max="0.75" y_min="-0.25" y_max="0.25" z="0.55" />
+		<objectSupportSurface name="Back Table" x_min="-0.05" x_max="0.45" y_min="-0.75" y_max="-0.35" z="0.55" />
+	</model>
+	<problem>
+		<start>
+			<q unit="deg">0</q>
+			<q unit="deg">0</q>
+			<q unit="deg">0</q>
+			<q unit="deg">0</q>
+			<q unit="deg">0</q>
+			<q unit="deg">0</q>
+			<q unit="deg">0</q>
+			<q unit="m">0.6</q>
+			<q unit="m">0.12</q>
+			<q unit="m">0.55</q>	<!-- = 0.43 + 0.025 + 0.055 + 0.04 -->
+			<q unit="m">0.61</q>
+			<q unit="m">0</q>
+			<q unit="m">0.55</q>
+			<q unit="m">0.45</q>
+			<q unit="m">-0.1</q>
+			<q unit="m">0.55</q>
+		</start>
+		<goal>
+			<q unit="deg">0</q> <!-- add 'free="true"' -->
+			<q unit="deg">0</q>
+			<q unit="deg">0</q>
+			<q unit="deg">0</q>
+			<q unit="deg">0</q>
+			<q unit="deg">0</q>
+			<q unit="deg">0</q>
+			<q unit="m">0.18</q>
+			<q unit="m">-0.5</q>
+			<q unit="m">0.55</q>
+			<q unit="m">0.03</q>
+			<q unit="m">-0.5</q>
+			<q unit="m">0.55</q>
+			<q unit="m">0.33</q>
+			<q unit="m">-0.5</q>
+			<q unit="m">0.55</q>
+		</goal>
+	</problem>
+	<planner>
+		<!--<debugMode />-->
+		<!--<workspaceSampling edges="500" />-->
+		<primitives numEndEffectorBodies="1">
+			<primTransit />
+			<primPush dist_to_object_xy="0.14" height_offset_object="-0.045" max_push_dist="0.1" max_push_dist_joint_angle="30"> <!-- maxPushAngle was 18 -->
+				<!--<primPushMobile postproc_extend_dist="0.0" />-->
+				<primPushInterior tilt_hand_inward_angle="0" tilt_hand_downward_angle="65" postproc_extend_dist="0.0" />
+				<primPushExterior tilt_hand_inward_angle="0" tilt_hand_downward_angle="65" postproc_extend_dist="0.0" />
+				<primPushFrontal tilt_hand_inward_angle="30" tilt_hand_downward_angle="0" postproc_extend_dist="0.0" />
+			</primPush>
+			<primPickup height_offset_object="0" height_pickup_dist_object="0.1" min_plane_dist_for_pickup="0.2" tilt_hand_y_angle="45" />
+			<primTransferRigid />
+		</primitives>
+		<kinematicSoftRange scale="1.0" />
+		<delta unit="deg">2.0</delta>
+		<extendStep>0.2</extendStep>
+		<epsilon>1e-3</epsilon>
+		<duration>60</duration>
+		<seed type="randSingle" group="26" single="699158960"></seed><!-- type is "randSingle" or "singleOnly" TEST: 2097169232-->
+		<numRuns>200</numRuns>
+		<kdTree />
+		<!--<accurateDistance />-->
+		<bidirectional/>
+		<sampling robotPoseProb="0.4" objectsFreeProb="0.4" robotRandProb="0.8" />
+		<!--<hierarchical objectPathTimeout="120" subProblemTimeout="30" />--> <!-- for all non-mobile robots: subProblemTimeout was 300 -->
+		<metricRobot radToMeter="0.5" quatToMeter="2.0" overallRobotWeight="1.0" />
+		<!-- metric types are: 1) MaxComponentMovement, 2) SumComponentMovementWithObjectPenalty (requires movingObjectPenalty), 3) ForwardDistanceWithObjectPenalty (requires movingObjectPenalty, moveToObjectPenalty, moveToObjectFactor), 4) MiniESPMetricWithPenalties (requires movingObjectPenalty, moveToObjectPenalty, moveToObjectFactor) -->
+		<metricComposed type="MiniESPMetricWithPenalties" movingObjectPenalty="0.1" moveToObjectPenalty="0.3" moveToObjectFactor="1.0" />
+		<!--<inverseKinematics type="Relaxed" />-->
+		<inverseKinematics postureGainMaxStepDeg="20.0" prematureQuit="true" /><!----> <!-- try to go up to 60.0+ -->
+	</planner>
+	<postProc>
+		<pathSmoothing /><!---->
+		<!--<extendPushes />-->
+	</postProc>
+	<viewer mode="off" onlyResult="on" speedFactor="3.5"> <!-- allowed mode: loop, once, off -->
+		<!--<showFullTree />-->
+		<!--<showExportableTree pointSize="21.0" lineWidth="10.0" />--> <!-- for all non-mobile robots: set to 16.0 and 5.0 -->
+	</viewer>
+</dama>

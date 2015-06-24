@@ -1,0 +1,10 @@
+*~
+
+Release/
+Debug/
+output/
+data/models/mekabot-convex/rlsg/mekabot/
+
+.settings/
+.project
+.cproject

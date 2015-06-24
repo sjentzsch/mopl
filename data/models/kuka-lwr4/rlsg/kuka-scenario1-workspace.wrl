@@ -1,0 +1,38 @@
+#VRML V2.0 utf8
+Transform {
+	children [
+		DEF table1 Transform {
+			translation 0.50 0 0
+			children [
+				Inline {
+					url "table.wrl"
+				}
+			]
+		}
+		DEF table2 Transform {
+			translation 0.2 -0.6 0
+			children [
+				Inline {
+					url "table.wrl"
+				}
+			]
+		}
+		DEF floor Transform {
+			translation 0 0 -0.035
+			children [
+				Shape {
+					appearance Appearance {
+						material Material {
+							transparency 0.0
+							diffuseColor 0.85 0.85 0.85
+						}
+					}
+					geometry Box {
+						size 2 2 0.05
+					}
+				}
+			]
+		}
+	]
+}
+

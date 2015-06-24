@@ -1,0 +1,151 @@
+#VRML V2.0 utf8
+Transform {
+	children [
+		DEF table1 Transform {
+			translation 0.50 0 0
+			children [
+				Inline {
+					url "table.wrl"
+				}
+			]
+		}
+		DEF table2 Transform {
+			translation 0.2 -0.6 0
+			children [
+				Inline {
+					url "table.wrl"
+				}
+			]
+		}
+		DEF floor Transform {
+			translation 0 0 -0.025
+			children [
+				Shape {
+					appearance Appearance {
+						material Material {
+							transparency 0.0
+							diffuseColor 0.85 0.85 0.85
+						}
+					}
+					geometry Box {
+						size 2 2 0.05
+					}
+				}
+			]
+		}
+		DEF cabinetTop Transform {
+			translation 0.2 -0.76 0.65
+			children [
+				Shape {
+					appearance Appearance {
+						material Material {
+							transparency 0.8
+							diffuseColor 0.5 0.5 0.5
+						}
+					}
+					geometry Box {
+						size 0.54 0.22 0.03
+					}
+				}
+			]
+		}
+		DEF cabinetLeft Transform {
+			translation 0.455 -0.76 0.5326
+			children [
+				Shape {
+					appearance Appearance {
+						material Material {
+							transparency 0.8
+							diffuseColor 0.5 0.5 0.5
+						}
+					}
+					geometry Box {
+						size 0.03 0.22 0.2049
+					}
+				}
+			]
+		}
+		DEF cabinetRight Transform {
+			translation -0.055 -0.76 0.5326
+			children [
+				Shape {
+					appearance Appearance {
+						material Material {
+							transparency 0.8
+							diffuseColor 0.5 0.5 0.5
+						}
+					}
+					geometry Box {
+						size 0.03 0.22 0.2049
+					}
+				}
+			]
+		}
+		DEF cabinetBack Transform {
+			translation 0.2 -0.855 0.5326
+			children [
+				Shape {
+					appearance Appearance {
+						material Material {
+							transparency 0.8
+							diffuseColor 0.5 0.5 0.5
+						}
+					}
+					geometry Box {
+						size 0.48 0.03 0.2049
+					}
+				}
+			]
+		}
+
+
+#		DEF objectAir Transform {
+#			translation 0.25 -0.20 0.7
+#			children [
+#				Shape {
+#					appearance Appearance {
+#						material Material {
+#							transparency 0.5
+#						}
+#					}
+#					geometry Box {
+#						size 0.9 0.9 0.5
+#					}
+#				}
+#			]
+#		}
+
+#		DEF SS1 Transform {
+#			translation 0.5 0.0 0.55
+#			children [
+#				Shape {
+#					appearance Appearance {
+#						material Material {
+#							transparency 0.5
+#						}
+#					}
+#					geometry Box {
+#						size 0.5 0.5 0.1
+#					}
+#				}
+#			]
+#		}
+
+#		DEF SS1 Transform {
+#			translation 0.2 -0.55 0.55
+#			children [
+#				Shape {
+#					appearance Appearance {
+#						material Material {
+#							transparency 0.5
+#						}
+#					}
+#					geometry Box {
+#						size 0.5 0.4 0.1
+#					}
+#				}
+#			]
+#		}
+	]
+}
+

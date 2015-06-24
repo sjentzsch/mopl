@@ -1,0 +1,152 @@
+#VRML V2.0 utf8
+
+PROTO MaterialCounter []{
+	Material {
+		diffuseColor 1 1 1
+	}
+}
+
+DEF counter Transform{
+	translation -0.098 -0.12 0.188
+	children[
+		DEF box1 Transform{
+			translation 0 0 -0.2465
+			children[
+			Shape {
+				appearance Appearance {
+                		       material MaterialCounter {}
+                		}
+				geometry Box {
+					size   0.44 1.04 0.533
+				}
+			}			
+			]
+		}
+
+		DEF box2 Transform{
+			translation 0.285 0 -0.369
+			children[
+			Shape {
+				appearance Appearance {
+                		       material MaterialCounter {}
+                		}
+				geometry Box {
+					size   0.17 1.00 0.248
+				}
+			}			
+			]
+		}
+		DEF box3 Transform{
+			translation 0.3915 0 -0.4715
+			children[
+			Shape {
+				appearance Appearance {
+                		       material MaterialCounter {}
+                		}
+				geometry Box {
+					size   0.043 1.00 0.043
+				}
+			}			
+			]
+		}
+		DEF box4 Transform{
+			translation 0.558 -0.1045 -0.5145
+			children[
+			Shape {
+				appearance Appearance {
+                		       material MaterialCounter {}
+                		}
+				geometry Box {
+					size   0.29 0.043 0.043
+				}
+			}			
+			]
+		}
+		DEF box5 Transform{
+			translation 0.558 0.1545 -0.5145
+			children[
+			Shape {
+				appearance Appearance {
+                		       material MaterialCounter {}
+                		}
+				geometry Box {
+					size   0.29 0.043 0.043
+				}
+			}			
+			]
+		}
+		DEF box6 Transform{
+			translation 0.77625 0.025 -0.443
+			children[
+			Shape {
+				appearance Appearance {
+                		       material MaterialCounter {}
+                		}
+				geometry Box {
+					size   0.1525 0.216 0.10
+				}
+			}			
+			]
+		}
+		DEF box7 Transform{
+			translation 0.77625 0.025 -0.388
+			children[
+			Shape {
+				appearance Appearance {
+                		       material MaterialCounter {}
+                		}
+				geometry Box {
+					size   0.274 0.244 0.01
+				}
+			}			
+			]
+		}
+		DEF robotBase Transform{
+			translation 0.756 0.018 -0.348
+			children[
+			Shape {
+				appearance Appearance { 
+				    material Material { 
+				      diffuseColor 0 0 1 
+				    } 
+				}
+				geometry Box {
+					size   0.314 0.19 0.07
+				}
+			}			
+			]
+		}
+		DEF robotDistance Transform{
+			translation 0.48 0.018 -0.348
+			children[
+			Shape {
+				appearance Appearance { 
+				    material Material { 
+				      diffuseColor 1 0 0 
+				    } 
+				}
+				geometry Box {
+					size   0.22 0.01 0.01
+				}
+			}			
+			]
+		}
+		DEF robotClose Transform{
+			translation 0.595 0.018 -0.348
+			children[
+			Shape {
+				appearance Appearance { 
+				    material Material { 
+				      diffuseColor 1 1 0 
+				    } 
+				}
+				geometry Box {
+					size   0.01 0.01 0.01
+				}
+			}			
+			]
+		}
+	]
+}
+
+

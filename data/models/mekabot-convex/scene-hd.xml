@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rlsg xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="rlsg.xsd">
+	<scene href="workspace-hd.wrl">
+		<!--<model name="origin">
+			<body name="origin"/>
+		</model>-->
+		<model name="mekabot">
+			<body name="T2R3_TJ0_base"/>
+			<body name="T2R3_TJ1_pan"/>
+			<body name="T2R3_TJ2"/>
+			<body name="T2R3_TJ3"/>
+			<body name="A2R3_T4_Chest"/>
+			<body name="A2R3_RT1_shoulderRoll"/>
+			<body name="A2R3_RT2_shoulderPitch"/>
+			<body name="A2R3_RT3_bicep"/>
+			<body name="A2R3_RT4_elbow"/>
+			<body name="A2R3_T5_forearmRoll"/>
+			<body name="A2R3_T6_wristDiff"/>
+			<body name="A2R3_T7_wristYaw"/>
+			<body name="RT8"/>
+			<body name="H2R3_hand"/>
+		</model>
+		<model name="package1">
+			<body name=""/>
+		</model>
+		<model name="package2">
+			<body name=""/>
+		</model>
+		<model name="package3">
+			<body name=""/>
+		</model><!---->
+		<!--<model name="package4">
+			<body name=""/>
+		</model>
+		<model name="package5">
+			<body name=""/>
+		</model>
+		<model name="package6">
+			<body name=""/>
+		</model>-->
+		<model name="workspace">
+			<!--<body name="houseWallLeft"/>-->
+			<body name="tableSurfaceUp"/>
+			<!--<body name="tableSurfaceUp2"/>-->
+			<!--<body name="tableSurfaceUp3"/>-->
+			<body name="tableSurfaceLow"/>
+			<body name="tableWallFront"/>
+			<body name="tableWallBlockRight"/>
+			<body name="tableWallBlockLeft"/>
+			<body name="tableWallBack"/>
+			<body name="tableCrossBarBack"/>
+			<body name="safetySwitch"/>
+			<body name="robotTableBlockLeft"/>
+			<body name="robotTableBlockRight"/>
+			<body name="robotBaseBlock"/>
+			<body name="robotBaseSurface"/>
+
+		</model>
+	</scene>
+</rlsg>

@@ -1,0 +1,98 @@
+#VRML V2.0 utf8
+
+DEF kuka-lwr4-right Transform {
+	translation 0 0 0
+	children [
+		Inline {
+			url "kuka-lwr4/kuka-lwr4-right.wrl"
+		}
+	]
+}
+DEF package1 Transform {
+	scale 0.7 0.7 0.7
+	translation 0.130165 -0.537904 0.52
+	rotation 0 0 0 0
+	children [
+		Inline {
+			url "bottle-red.wrl"
+		}
+	]
+}
+DEF package2 Transform {
+	scale 0.7 0.7 0.7
+	translation 0.385991 -0.2887 0.52
+	rotation 0 0 0 0
+	children [
+		Inline {
+			url "bottle-green.wrl"
+		}
+	]
+}
+DEF package3 Transform {
+	scale 0.7 0.7 0.7
+	translation 0.45 -0.1 0.52
+	rotation 0 0 0 0
+	children [
+		Inline {
+			url "bottle-blue.wrl"
+		}
+	]
+}
+#DEF package1 Transform{
+#	translation 0.130165 -0.537904 0.877316
+#	rotation 1 0 0 1.5707963
+#	children[
+#	Shape {
+#		appearance Appearance {
+#			material Material {
+#			diffuseColor 1.0 0.0 0.0
+#			}
+#		}
+#		geometry Cylinder {
+#			radius 0.03
+#			height 0.10
+#		}
+#	}			
+#	]
+#}
+#DEF package2 Transform{
+#	translation 0.385991 -0.2887 1.10992
+#	rotation 1 0 0 1.5707963
+#	children[
+#	Shape {
+#		appearance Appearance {
+#			material Material {
+#			diffuseColor 0.0 1.0 0.0
+#			}
+#		}
+#		geometry Cylinder {
+#			radius 0.03
+#			height 0.10
+#		}
+#	}			
+#	]
+#}
+#DEF package3 Transform{
+#	translation 0.45 -0.1 0.55
+#	rotation 1 0 0 1.5707963
+#	children[
+#	Shape {
+#		appearance Appearance {
+#			material Material {
+#			diffuseColor 0.0 0.0 3.0
+#			}
+#		}
+#		geometry Cylinder {
+#			radius 0.03
+#			height 0.10
+#		}
+#	}			
+#	]
+#}
+DEF workspace Group {
+	children [
+		Inline {
+			url "kuka-scenario2-workspace.wrl"
+		}
+	]
+}

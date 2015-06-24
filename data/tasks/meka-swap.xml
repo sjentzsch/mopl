@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dama prefixName="meka-test" description="Meka test">
+	<model numOfObjects="3" dimOfObjects="3">
+		<sceneFile href="../models/mekabot-convex/scene.xml"/>
+		<sceneHDFile href="../models/mekabot-convex/scene.xml"/> <!-- take scene.xml as soon as you got the data for it -->
+		<mdlFile href="../models/mekabot-convex/rlmdl/mekabot-torso-rightarm.xml"/>
+		<mdlGraspFile href="../models/mekabot-convex/rlmdl/mekabot-torso-rightarm-grasp.xml"/>
+		<allJointsAreRevolute />
+		<!--<allJointsArePrismatic />-->
+		<!--<coupleJoint1AndJoint2 />-->
+		<objectSamplingSpace name="Upper Empty Space" x_min="-0.1" x_max="0.25" y_min="-0.4" y_max="0.55" z_min="0.146" z_max="0.436" />
+		<objectSupportSurface name="Surface" x_min="-0.1" x_max="0.16" y_min="-0.4" y_max="0.4" z="0.146" />
+	</model>
+	<problem>
+		<start>
+			<q unit="deg">0.0</q>
+			<q unit="deg">0.0</q>
+			<q unit="deg">0.0</q>
+			<q unit="deg">0.0</q>
+			<q unit="deg">15.0</q>
+			<q unit="deg">-20.0</q>
+			<q unit="deg">12.0</q>
+			<q unit="deg">112.0</q>
+			<q unit="deg">-10.0</q>
+			<q unit="deg">0.0</q>
+			<q unit="m">0.0</q>
+			<q unit="m">-0.4</q>
+			<q unit="m">0.146</q>
+			<q unit="m">0.0</q>
+			<q unit="m">0.1</q>
+			<q unit="m">0.146</q>
+			<q unit="m">0.0</q>
+			<q unit="m">0.3</q>
+			<q unit="m">0.146</q>
+		</start>
+		<goal>
+			<q unit="deg">0.0</q>
+			<q unit="deg">0.0</q>
+			<q unit="deg">0.0</q>
+			<q unit="deg">85.0</q>
+			<q unit="deg">30.0</q>
+			<q unit="deg">0.0</q>
+			<q unit="deg">5.0</q>
+			<q unit="deg">90.0</q>
+			<q unit="deg">-30.0</q>
+			<q unit="deg">0.0</q>
+			<q unit="m">0.0</q>
+			<q unit="m">-0.4</q>
+			<q unit="m">0.146</q>
+			<q unit="m">0.0</q>
+			<q unit="m">0.3</q>
+			<q unit="m">0.146</q>
+			<q unit="m">0.0</q>
+			<q unit="m">0.1</q>
+			<q unit="m">0.146</q>
+		</goal>
+	</problem>
+	<planner>
+		<!--<debugMode />-->
+		<!--<workspaceSampling edges="5000" />-->
+		<primitives numEndEffectorBodies="2">
+			<primTransit />
+			<primPush dist_to_object_xy="0.06" height_offset_object="-0.045" max_push_dist="0.1"> <!-- max_push_dist_joint needed? maybe kuka robot?? -->
+				<!--<primPushMobile postproc_extend_dist="0.0" />-->
+				<primPushInterior tilt_hand_inward_angle="-15" tilt_hand_downward_angle="75" postproc_extend_dist="0.02" /><!----> <!-- r3: 0, 65 -->
+				<primPushExterior tilt_hand_inward_angle="15" tilt_hand_downward_angle="75" postproc_extend_dist="0.06" /><!----> <!-- r3: 0, 65 -->
+				<!--<primPushFrontal tilt_hand_inward_angle="30" tilt_hand_downward_angle="0" postproc_extend_dist="0.26" />-->
+			</primPush>
+			<primPickup endEffectorBody="H2R3_hand_grasp" height_offset_object="-0.015" height_pickup_dist_object="0.1" min_plane_dist_for_pickup="0.1" /> <!-- for robot 3 (=kuka): height_offset_object="0" , for min_plane_dist_for_pickup set 0.2 e.g. -->
+			<primTransferRigid endEffectorBody="H2R3_hand_grasp" />
+		</primitives>
+		<kinematicSoftRange scale="1.1" />
+		<delta>0.005</delta>
+		<extendStep>0.1</extendStep> <!-- 0.2 worked better than 0.1 once, but dunno ... smaller, better I guess -->
+		<epsilon>1e-3</epsilon>
+		<!--<duration>120</duration>-->
+		<seed type="randSingle" group="25" single="699158960"></seed><!-- type is "randSingle" or "singleOnly" -->
+		<numRuns>1</numRuns>
+		<kdTree />
+		<!--<accurateDistance />-->
+		<bidirectional/>
+		<sampling robotPoseProb="0.4" objectsFreeProb="0.5" robotRandProb="0.5" />
+		<!--<hierarchical objectPathTimeout="120" subProblemTimeout="30" />--> <!-- for all non-mobile robots: subProblemTimeout was 300 -->
+		<metricRobot radToMeter="0.5" quatToMeter="2.0" overallRobotWeight="1.0" />
+		<!-- metric types are: 1) MaxComponentMovement, 2) SumComponentMovementWithObjectPenalty (requires movingObjectPenalty), 3) ForwardDistanceWithObjectPenalty (requires movingObjectPenalty, moveToObjectPenalty, moveToObjectFactor), 4) MiniESPMetricWithPenalties (requires movingObjectPenalty, moveToObjectPenalty, moveToObjectFactor) -->
+		<!--<metricComposed type="SumComponentMovementWithObjectPenalty" movingObjectPenalty="0.5" />-->
+		<metricComposed type="ForwardDistanceWithObjectPenalty" movingObjectPenalty="0.1" moveToObjectPenalty="0.3" moveToObjectFactor="1.0" />
+		<inverseKinematics postureGainMaxStepDeg="20.0" prematureQuit="false" /> <!-- try to go up to 60.0+ -->
+	</planner>
+	<postProc>
+		<pathSmoothing /><!---->
+		<!--<extendPushes />-->
+	</postProc>
+	<viewer mode="loop" onlyResult="on" speedFactor="2.6"> <!-- allowed mode: loop, once, off -->
+		<!--<showFullTree />-->
+		<!--<showExportableTree pointSize="21.0" lineWidth="10.0" />--> <!-- for all non-mobile robots: set to 16.0 and 5.0 -->
+	</viewer>
+</dama>

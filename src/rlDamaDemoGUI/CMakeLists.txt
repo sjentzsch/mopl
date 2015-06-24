@@ -1,0 +1,108 @@
+PROJECT(rlDamaDemoGUI)
+
+FIND_PACKAGE(Boost COMPONENTS system REQUIRED)
+FIND_PACKAGE(OpenGL REQUIRED)
+FIND_PACKAGE(Qt4 REQUIRED)
+
+FIND_PACKAGE(Cgal REQUIRED)
+FIND_PACKAGE(Coin REQUIRED)
+FIND_PACKAGE(Eigen REQUIRED)
+FIND_PACKAGE(Iconv)
+FIND_PACKAGE(LibXml2 REQUIRED)
+FIND_PACKAGE(Solid REQUIRED)
+FIND_PACKAGE(SoQt REQUIRED)
+FIND_PACKAGE(ZLIB)
+
+find_package(RL COMPONENTS KIN MDL SG PLAN REQUIRED)
+
+ADD_DEFINITIONS(
+	-DCGAL_DISABLE_ROUNDING_MATH_CHECK
+	${COIN_DEFINITIONS}
+	${QT_DEFINITIONS}
+	${SOQT_DEFINITIONS}
+)
+
+INCLUDE_DIRECTORIES(
+	BEFORE
+	${CMAKE_CURRENT_SOURCE_DIR}/..
+	${Boost_INCLUDE_DIR}
+	${CGAL_INCLUDE_DIRS}
+	${COIN_INCLUDE_DIRS}
+	${EIGEN_INCLUDE_DIRS}
+	${LIBXML2_INCLUDE_DIRS}
+	${OPENGL_INCLUDE_DIR}
+	${QT_INCLUDES}
+	${SOQT_INCLUDE_DIRS}
+)
+	
+LINK_DIRECTORIES(
+	${Boost_LIBRARY_DIRS}
+)
+
+SET(
+	HDRS
+	ConfigurationDelegate.h
+	ConfigurationModel.h
+	ConfigurationSpaceScene.h
+	ConfigurationSpaceThread.h
+	DamaPlanner.h
+	MainWindow.h
+	PlannerModel.h
+	Thread.h
+	Viewer.h
+)
+
+SET(
+	SRCS
+	ConfigurationDelegate.cpp
+	ConfigurationModel.cpp
+	ConfigurationSpaceScene.cpp
+	ConfigurationSpaceThread.cpp
+	DamaPlanner.cpp
+	MainWindow.cpp
+	PlannerModel.cpp
+	rlDamaDemoGUI.cpp
+	Thread.cpp
+	Viewer.cpp
+)
+
+QT4_WRAP_CPP(
+	MOC_SRCS
+	ConfigurationDelegate.h
+	ConfigurationSpaceScene.h
+	ConfigurationSpaceThread.h
+	DamaPlanner.h
+	MainWindow.h
+	Thread.h
+	Viewer.h
+	OPTIONS
+	-DBOOST_TT_HAS_OPERATOR_HPP_INCLUDED
+)
+
+ADD_EXECUTABLE(
+	rlDamaDemoGUI
+	${HDRS}
+	${SRCS}
+	${MOC_SRCS}
+)
+
+TARGET_LINK_LIBRARIES(
+	rlDamaDemoGUI
+	moplplan
+	rlplan
+	rlkin
+	rlsg
+	${Boost_LIBRARIES}
+	${CGAL_LIBRARIES}
+	${COIN_LIBRARIES}
+	${LIBXML2_LIBRARIES}
+	${OPENGL_LIBRARIES}
+	${QT_QTCORE_LIBRARY}
+	${QT_QTGUI_LIBRARY}
+	${QT_QTOPENGL_LIBRARY}
+	${SOQT_LIBRARIES}
+)
+	
+ADD_DEFINITIONS(-DHAVE_SOLID)
+INCLUDE_DIRECTORIES(${SOLID_INCLUDE_DIRS})
+TARGET_LINK_LIBRARIES(rlDamaDemoGUI ${SOLID_LIBRARIES})

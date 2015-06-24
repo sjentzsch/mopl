@@ -1,0 +1,200 @@
+#VRML V2.0 utf8
+
+DEF counter Transform{
+	translation 0.0 0.0 0.0 #-0.110 -0.13 0.188
+	children[
+		# table upper surface
+		DEF tableSurfaceUp Transform{
+			translation 0.0 0.0 0.0
+			children[
+			Shape {
+				appearance Appearance {
+                			material Material {
+					diffuseColor 0.60 0.40 0.20
+					}
+                		}
+				geometry Box {
+					size 0.40 1.00 0.05
+				}
+			}			
+			]
+		}
+		# table lower surface
+		DEF tableSurfaceLow Transform{
+			translation 0.1475 0.0 -0.24
+			children[
+			Shape {
+				appearance Appearance {
+                			material Material {
+					diffuseColor 0.60 0.40 0.20
+					}
+                		}
+				geometry Box {
+					size 0.455 1.00 0.05
+				}
+			}			
+			]
+		}
+		# table front wall (towards guests)
+		DEF tableWallFront Transform{
+			translation -0.105 0.0 -0.5725
+			children[
+			Shape {
+				appearance Appearance {
+                			material Material {
+					diffuseColor 0.48 0.28 0.10
+					}
+                		}
+				geometry Box {
+					size 0.05 1.00 1.095
+				}
+			}			
+			]
+		}
+		# table wall block upper<->lower surface right
+		DEF tableWallBlockRight Transform{
+			translation 0.175 0.475 -0.12
+			children[
+			Shape {
+				appearance Appearance {
+                			material Material {
+					diffuseColor 0.48 0.28 0.10
+					}
+                		}
+				geometry Box {
+					size 0.05 0.05 0.19
+				}
+			}			
+			]
+		}
+		# table wall block upper<->lower surface left
+		DEF tableWallBlockLeft Transform{
+			translation 0.175 -0.475 -0.12
+			children[
+			Shape {
+				appearance Appearance {
+                			material Material {
+					diffuseColor 0.48 0.28 0.10
+					}
+                		}
+				geometry Box {
+					size 0.05 0.05 0.19
+				}
+			}			
+			]
+		}
+		# table back wall (towards robot)
+		DEF tableWallBack Transform{
+			translation 0.35 0.0 -0.6925
+			children[
+			Shape {
+				appearance Appearance {
+                			material Material {
+					diffuseColor 0.48 0.28 0.10
+					}
+                		}
+				geometry Box {
+					size 0.05 1.00 0.855
+				}
+			}			
+			]
+		}
+		# table back crossbar
+		DEF tableCrossBarBack Transform{
+			translation 0.40 0.0 -0.45
+			children[
+			Shape {
+				appearance Appearance {
+                			material Material {
+					diffuseColor 0.70 0.50 0.30
+					}
+                		}
+				geometry Box {
+					size 0.05 1.00 0.05
+				}
+			}			
+			]
+		}
+		# safety switch
+		DEF safetySwitch Transform{
+			translation 0.3325 0.425 -0.1675
+			children[
+			Shape {
+				appearance Appearance {
+                			material Material {
+					diffuseColor 0.8 0.2 0.2
+					}
+                		}
+				geometry Box {
+					size 0.085 0.15 0.095
+				}
+			}			
+			]
+		}
+
+		# robot<->table side block left
+		DEF robotTableBlockLeft Transform{
+			translation 0.675 -0.108 -0.5
+			children[
+			Shape {
+				appearance Appearance {
+                			material Material {
+					diffuseColor 0.70 0.50 0.30
+					}
+                		}
+				geometry Box {
+					size 0.6 0.05 0.05
+				}
+			}			
+			]
+		}
+		# robot<->table side block right
+		DEF robotTableBlockRight Transform{
+			translation 0.675 0.158 -0.5
+			children[
+			Shape {
+				appearance Appearance {
+                			material Material {
+					diffuseColor 0.70 0.50 0.30
+					}
+                		}
+				geometry Box {
+					size 0.6 0.05 0.05
+				}
+			}			
+			]
+		}
+		# robot base lower part
+		DEF robotBaseBlock Transform{
+			translation 0.77625 0.025 -0.4225
+			children[
+			Shape {
+				appearance Appearance {
+                			material Material {
+					diffuseColor 0.70 0.50 0.30
+					}
+                		}
+				geometry Box {
+					size   0.1525 0.216 0.105
+				}
+			}			
+			]
+		}
+		# robot base upper part
+		DEF robotBaseSurface Transform{
+			translation 0.77625 0.025 -0.365
+			children[
+			Shape {
+				appearance Appearance {
+                			material Material {
+					diffuseColor 0.70 0.50 0.30
+					}
+                		}
+				geometry Box {
+					size   0.35 0.24 0.01
+				}
+			}			
+			]
+		}
+	]
+}

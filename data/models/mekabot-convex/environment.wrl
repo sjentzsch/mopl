@@ -1,0 +1,251 @@
+#VRML V2.0 utf8
+
+# a bit larger (side and front)
+# 40cm shorter
+
+DEF counter Transform{
+	translation 0.0 0.0 0.0 #-0.110 -0.13 0.188
+	children[
+		# house wall on the left side of robot
+		DEF houseWallLeft Transform{
+			translation 0.3 -0.545 -0.1
+			children[
+			Shape {
+				appearance Appearance {
+                			material Material {
+					diffuseColor 0.48 0.28 0.10
+					}
+                		}
+				geometry Box {
+					size 1.10 0.05 1.30
+				}
+			}			
+			]
+		}
+		# table upper surface
+		DEF tableSurfaceUp Transform{
+			translation 0.0 0.0 0.0
+			children[
+			Shape {
+				appearance Appearance {
+                			material Material {
+					diffuseColor 0.60 0.40 0.20
+					}
+                		}
+				geometry Box {
+					size 0.40 1.04 0.05
+				}
+			}			
+			]
+		}
+		# table second upper surface (higher)
+		DEF tableSurfaceUp2 Transform{
+			translation -0.065 0.0 0.05
+			children[
+			Shape {
+				appearance Appearance {
+                			material Material {
+					diffuseColor 0.48 0.28 0.10
+					}
+                		}
+				geometry Box {
+					size 0.27 1.04 0.05
+				}
+			}			
+			]
+		}
+		# table second upper surface (higher, in real environment!)
+		DEF tableSurfaceUp3 Transform{
+			translation -0.065 0.1385 0.036
+			children[
+			Shape {
+				appearance Appearance {
+                			material Material {
+					diffuseColor 0.48 0.28 0.10
+					}
+                		}
+				geometry Box {
+					size 0.27 0.763 0.022	#1.04
+				}
+			}			
+			]
+		}
+		# table lower surface
+		DEF tableSurfaceLow Transform{
+			translation 0.1575 0.0 -0.24
+			children[
+			Shape {
+				appearance Appearance {
+                			material Material {
+					diffuseColor 0.60 0.40 0.20
+					}
+                		}
+				geometry Box {
+					size 0.475 1.04 0.05
+				}
+			}			
+			]
+		}
+		# table front wall (towards guests)
+		DEF tableWallFront Transform{
+			translation -0.105 0.0 -0.3725
+			children[
+			Shape {
+				appearance Appearance {
+                			material Material {
+					diffuseColor 0.48 0.28 0.10
+					}
+                		}
+				geometry Box {
+					size 0.05 1.04 0.695
+				}
+			}			
+			]
+		}
+		# table wall block upper<->lower surface right
+		DEF tableWallBlockRight Transform{
+			translation 0.175 0.495 -0.12
+			children[
+			Shape {
+				appearance Appearance {
+                			material Material {
+					diffuseColor 0.48 0.28 0.10
+					}
+                		}
+				geometry Box {
+					size 0.05 0.05 0.19
+				}
+			}			
+			]
+		}
+		# table wall block upper<->lower surface left
+		DEF tableWallBlockLeft Transform{
+			translation 0.175 -0.495 -0.12
+			children[
+			Shape {
+				appearance Appearance {
+                			material Material {
+					diffuseColor 0.48 0.28 0.10
+					}
+                		}
+				geometry Box {
+					size 0.05 0.05 0.19
+				}
+			}			
+			]
+		}
+		# table back wall (towards robot)
+		DEF tableWallBack Transform{
+			translation 0.37 0.0 -0.4925
+			children[
+			Shape {
+				appearance Appearance {
+                			material Material {
+					diffuseColor 0.48 0.28 0.10
+					}
+                		}
+				geometry Box {
+					size 0.05 1.04 0.455
+				}
+			}			
+			]
+		}
+		# table back crossbar
+		DEF tableCrossBarBack Transform{
+			translation 0.42 0.0 -0.45
+			children[
+			Shape {
+				appearance Appearance {
+                			material Material {
+					diffuseColor 0.70 0.50 0.30
+					}
+                		}
+				geometry Box {
+					size 0.05 1.04 0.05
+				}
+			}			
+			]
+		}
+		# safety switch
+		DEF safetySwitch Transform{
+			translation 0.3425 0.435 -0.1625
+			children[
+			Shape {
+				appearance Appearance {
+                			material Material {
+					diffuseColor 0.8 0.2 0.2
+					}
+                		}
+				geometry Box {
+					size 0.105 0.17 0.105
+				}
+			}			
+			]
+		}
+
+		# robot<->table side block left
+		DEF robotTableBlockLeft Transform{
+			translation 0.685 -0.108 -0.5
+			children[
+			Shape {
+				appearance Appearance {
+                			material Material {
+					diffuseColor 0.70 0.50 0.30
+					}
+                		}
+				geometry Box {
+					size 0.58 0.05 0.05
+				}
+			}			
+			]
+		}
+		# robot<->table side block right
+		DEF robotTableBlockRight Transform{
+			translation 0.685 0.158 -0.5
+			children[
+			Shape {
+				appearance Appearance {
+                			material Material {
+					diffuseColor 0.70 0.50 0.30
+					}
+                		}
+				geometry Box {
+					size 0.58 0.05 0.05
+				}
+			}			
+			]
+		}
+		# robot base lower part
+		DEF robotBaseBlock Transform{
+			translation 0.77625 0.025 -0.4225
+			children[
+			Shape {
+				appearance Appearance {
+                			material Material {
+					diffuseColor 0.70 0.50 0.30
+					}
+                		}
+				geometry Box {
+					size   0.1525 0.216 0.105
+				}
+			}			
+			]
+		}
+		# robot base upper part
+		DEF robotBaseSurface Transform{
+			translation 0.77625 0.025 -0.365
+			children[
+			Shape {
+				appearance Appearance {
+                			material Material {
+					diffuseColor 0.70 0.50 0.30
+					}
+                		}
+				geometry Box {
+					size   0.35 0.24 0.01
+				}
+			}			
+			]
+		}
+	]
+}
