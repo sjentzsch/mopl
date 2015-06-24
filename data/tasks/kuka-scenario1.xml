@@ -68,8 +68,8 @@
 		<extendStep>0.2</extendStep>
 		<epsilon>1e-3</epsilon>
 		<duration>60</duration>
-		<seed type="randSingle" group="26" single="699158960"></seed><!-- type is "randSingle" or "singleOnly" TEST: 2097169232-->
-		<numRuns>200</numRuns>
+		<seed type="randSingle" group="28" single="699158960"></seed><!-- type is "randSingle" or "singleOnly" TEST: 2097169232-->
+		<numRuns>1</numRuns>
 		<kdTree />
 		<!--<accurateDistance />-->
 		<bidirectional/>
@@ -85,7 +85,7 @@
 		<pathSmoothing /><!---->
 		<!--<extendPushes />-->
 	</postProc>
-	<viewer mode="off" onlyResult="on" speedFactor="3.5"> <!-- allowed mode: loop, once, off -->
+	<viewer mode="loop" onlyResult="off" speedFactor="3.5"> <!-- allowed mode: loop, once, off -->
 		<!--<showFullTree />-->
 		<!--<showExportableTree pointSize="21.0" lineWidth="10.0" />--> <!-- for all non-mobile robots: set to 16.0 and 5.0 -->
 	</viewer>

@@ -2,7 +2,7 @@
 <dama prefixName="meka-scenario-1" description="Meka Scenario 1">
 	<model numOfObjects="3" dimOfObjects="3">
 		<sceneFile href="../models/mekabot-convex/meka-scenario1.xml"/>
-		<sceneHDFile href="../models/mekabot-convex/meka-scenario1-hd.xml"/>
+		<sceneHDFile href="../models/mekabot-convex/meka-scenario1.xml"/>
 		<mdlFile href="../models/mekabot-convex/rlmdl/mekabot-torso-rightarm.xml"/>
 		<mdlGraspFile href="../models/mekabot-convex/rlmdl/mekabot-torso-rightarm-grasp.xml"/>
 		<allJointsAreRevolute />
@@ -87,8 +87,8 @@
 		<extendStep>0.1</extendStep> <!-- 0.2 worked better than 0.1 once, but dunno ... smaller, better I guess -->
 		<epsilon>1e-3</epsilon>
 		<duration>600</duration><!---->
-		<seed type="randSingle" group="26" single="636253791"></seed><!-- type is "randSingle" or "singleOnly" -->
-		<numRuns>5</numRuns>
+		<seed type="randSingle" group="28" single="699158960"></seed><!-- type is "randSingle" or "singleOnly" -->
+		<numRuns>1</numRuns>
 		<kdTree />
 		<!--<accurateDistance />-->
 		<bidirectional/>
@@ -105,8 +105,8 @@
 		<pathSmoothing /><!---->
 		<!--<extendPushes />-->
 	</postProc>
-	<viewer mode="loop" onlyResult="on" speedFactor="1.5"> <!-- allowed mode: loop, once, off -->
+	<viewer mode="loop" onlyResult="off" speedFactor="2.6"> <!-- allowed mode: loop, once, off -->
 		<!--<showFullTree />-->
-		<showExportableTree pointSize="12.0" lineWidth="4.0" /> <!-- for all non-mobile robots: set to 16.0 and 5.0 -->
+		<!--<showExportableTree pointSize="21.0" lineWidth="10.0" />--> <!-- for all non-mobile robots: set to 16.0 and 5.0 -->
 	</viewer>
 </dama>
